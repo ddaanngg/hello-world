@@ -47,43 +47,58 @@ public class HelloWorld
 		System.out.println("This will be a number guessing game.");
 		
 		System.out.println("Please select a difficulty setting.");
-		System.out.println("type 1 for easy mode");
-		System.out.println("type 2 for normal mode");
-		System.out.println("type 3 for hard mode");
+		System.out.println("Type 1 for easy mode");
+		System.out.println("Type 2 for normal mode");
+		System.out.println("Type 3 for hard mode");
 		int numberOfChances = 3;
+		double answer = 2;
 		
-		int difficulty = inputUser.nextInt();
-		/**if(difficulty <= 1)
+		int difficulty = 0;
+		int answerMax = 0;
+		
+		while (difficulty != 1 && difficulty !=2 && difficulty !=3)
 		{
-			numberOfChances = 3;
-			double answer = Math.random() * 10;
-			System.out.println("Easy mode selected.");
+			difficulty = inputUser.nextInt();
+			
+			if(difficulty == 1)
+			{
+				System.out.println("Easy mode selected.");
+				numberOfChances = 3;
+				answerMax = 5;
+				answer = Math.random() * answerMax + 1;
+			}
+			else if(difficulty == 2)
+			{
+				System.out.println("Normal mode selected.");
+				numberOfChances = 3;
+				answerMax = 10;
+				answer = Math.random() * answerMax + 1;
+			}
+			else if(difficulty == 3)
+			{
+				System.out.println("Normal mode selected.");
+				numberOfChances = 3;
+				answerMax = 15;
+				answer = Math.random() * answerMax + 1;
+			}
+			else
+			{
+				System.out.println("No comprehende. Do it again.");
+			}
+			
 		}
-		if(difficulty == 2)
-		{
-			numberOfChances = 4;
-			double answer = Math.random() * 10;
-			System.out.println("Normal mode selected.");
-		}
-		if(difficulty >= 3)
-		{
-			numberOfChances = 5;
-			double answer = Math.random() * 10;
-			System.out.println("Normal mode selected.");
-		}
-		**/
+		
 		System.out.println("You will have " + numberOfChances + " chances.");
 
 		//Random num = new Random();
 		//int answer = num.nextInt(10);
-		int answer;
-		int answerAsInt = answer;
+		int answerAsInt = (int)answer;
 		
 		boolean userWin = false;
 		
 		//System.out.println(answer);
 		
-		System.out.println("The number will be between 1 and 10.");
+		System.out.println("The number will be between 1 and " + answerMax + ". Good luck!");
 		
 		for(int i = 0; i < numberOfChances; i++)
 		{
@@ -91,7 +106,7 @@ public class HelloWorld
 			int userInt1 = inputUser.nextInt();
 			if (answerAsInt == userInt1)
 			{
-				System.out.println("YOU WIN! PLAY AGAIN?");
+				System.out.println("YOU WIN!\nThe number was " + answerAsInt + ".\nPLAY AGAIN?");
 				userWin = true;
 				break;
 			}
@@ -106,7 +121,7 @@ public class HelloWorld
 		}
 		if (userWin == false)
 		{
-			System.out.println("YOU LOSE! PLAY AGAIN?");
+			System.out.println("YOU LOSER!\nThe number was " + answerAsInt + ".\nPLAY AGAIN?");
 		}
 		
 	}
